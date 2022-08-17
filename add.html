@@ -23,8 +23,21 @@ function loadDoc() {
     }
   };
   xhttp.open("POST", "https://api.mojidict.com/parse/functions/search_v3", true);
-  xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.setRequestHeader("Access-Control-Allow-Origin", "chrome-extension://emabploknlbikjjpflbdobllgipnihmj");
+  //xhttp.setRequestHeader("Content-type", "application/json");
+  //xhttp.setRequestHeader("Access-Control-Allow-Origin", "chrome-extension://emabploknlbikjjpflbdobllgipnihmj");
+  xhttp.setRequestHeader("Accept", "application/json, text/plain, */*");
+  xhttp.setRequestHeader("Accept-Encoding", "gzip, deflate, br");
+  xhttp.setRequestHeader("Accept-Language", "ja,en;q=0.9,en-GB;q=0.8,en-US;q=0.7");
+  xhttp.setRequestHeader("Connection", "keep-alive");
+  xhttp.setRequestHeader("Content-Length", "225");
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.setRequestHeader("Cookie", "_ga=GA1.1.1909890843.1611797526; _ga_4JC8GCK9WK=GS1.1.1660710272.272.1.1660710299.0");
+  xhttp.setRequestHeader("Host", "api.mojidict.com");
+  xhttp.setRequestHeader("Origin", "chrome-extension://emabploknlbikjjpflbdobllgipnihmj");
+  xhttp.setRequestHeader("Sec-Fetch-Dest", "empty");
+  xhttp.setRequestHeader("Sec-Fetch-Mode", "cors");
+  xhttp.setRequestHeader("Sec-Fetch-Site", "none");
+  xhttp.setRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36 Edg/103.0.1264.77");
   xhttp.send({"_InstallationId": "7d959a18-48c4-243c-7486-632147466544","_ClientVersion": "js2.12.0","_ApplicationId": "E62VyFVLMiW7kvbtVq3p","langEnv": "zh-CN_ja","searchText": "—^‚¦‚é","_SessionToken": "r:8b6225bead300b49549e758a2bacc749"});
 }
 </script>
