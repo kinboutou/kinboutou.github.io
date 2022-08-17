@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="Shift-JIS">
+</head>
+<body>
+
+<h1>Word Translate</h1>
+<label for="class">Class:</label><br>
+<input type="text" id="class" name="class" value="テスト"><br>
+<label for="words">Words:</label><br>
+<input type="text" id="word" name="word" value="与える"><br>
+<button type="button" onclick="loadDoc()">Translate</button>
+
+<p id="demo"></p>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "https://api.mojidict.com/parse/functions/search_v3", true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send({"_InstallationId": "7d959a18-48c4-243c-7486-632147466544","_ClientVersion": "js2.12.0","_ApplicationId": "E62VyFVLMiW7kvbtVq3p","langEnv": "zh-CN_ja","searchText": "与える","_SessionToken": "r:8b6225bead300b49549e758a2bacc749"});
+}
+</script>
+
+</body>
+</html>
