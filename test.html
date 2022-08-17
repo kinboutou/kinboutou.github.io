@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="Shift-JIS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+jQuery(function($){
+    var jsonURL = 'http://www.example.com/jsonp.php';
+    var xhr = $.ajax({
+        url: jsonURL,
+        type: 'GET',
+        dataType: 'jsonp',
+        timeout: 30000
+    });
+    xhr.success(function(res){
+        $('body').append('通信成功');
+    });
+    xhr.error(function(res){
+        $('body').append('通信失敗');
+    });
+    xhr.complete(function(res){
+    });
+});
+  </script>
+</head>
+<body>
+
+
+  <form>
+
+
+  </form>
+</div>
+
+</body>
+</html>
