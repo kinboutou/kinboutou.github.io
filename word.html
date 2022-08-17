@@ -56,11 +56,15 @@
     else if (document.implementation
         && document.implementation.createDocument) {
 
-      if (xml.evaluate) {
-        var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
-        //var result = nodes.iterateNext();
-        xml.childNodes = nodes;
-      }
+      var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
+      var result = nodes.iterateNext();
+      var i = 0;
+      while (result) {
+          //txt += result.childNodes[0].nodeValue + "<br>";
+          xml.childNodes[i] = result.childNodes[0];
+          i++;
+          result = nodes.iterateNext();
+      } 
       
       xsltProcessor = new XSLTProcessor();
       xsltProcessor.importStylesheet(xsl);
