@@ -10,10 +10,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
 jQuery(function($){
-    var jsonURL = 'http://www.example.com/jsonp.php';
+    var jsonURL = 'https://api.mojidict.com/parse/functions/search_v3';
     var xhr = $.ajax({
         url: jsonURL,
-        type: 'GET',
+        type: 'POST',
         dataType: 'jsonp',
         timeout: 30000
     });
