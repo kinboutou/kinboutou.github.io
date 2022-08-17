@@ -16,32 +16,20 @@
     xhttp.send("");
     return xhttp.responseXML;
   }
-  
-  function searchResult(xml) {
-    var txt = "";
-    path = "/words/word[date=20220816]";
-    if (xml.evaluate) {
-        var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
-        var result = nodes.iterateNext();
-        while (result) {
-            txt += result.childNodes[0].nodeValue + "<br>";
-            result = nodes.iterateNext();
-        } 
-    // Code For Internet Explorer
-    } else if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
-        xml.setProperty("SelectionLanguage", "XPath");
-        nodes = xml.selectNodes(path);
-        for (i = 0; i < nodes.length; i++) {
-            txt += nodes[i].childNodes[0].nodeValue + "<br>";
-        }
-    }
-    document.getElementById("demo").innerHTML = txt;
-}
 
   function displayResult() {
+    
+    let url = new URL(window.location.href);
+    let params = url.searchParams;
+    let d = params.get('d');
+    let f = "word.xml";
+    
+    if (d) {
+      f = d.substr(0,4) + "/" + d.substr(4,2) + "/" + d.substr(6,2) + ".xml";
+    }
+    
     xml = loadXMLDoc("word.xml");
     xsl = loadXMLDoc("word.xsl");
-    path = "/words/word[date=20220816]";
     
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
@@ -56,16 +44,6 @@
     else if (document.implementation
         && document.implementation.createDocument) {
 
-      var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
-      var result = nodes.iterateNext();
-      var i = 0;
-      while (result) {
-          //txt += result.childNodes[0].nodeValue + "<br>";
-          xml.childNodes[i] = result.childNodes[0];
-          i++;
-          result = nodes.iterateNext();
-      } 
-      
       xsltProcessor = new XSLTProcessor();
       xsltProcessor.importStylesheet(xsl);
       resultDocument = xsltProcessor.transformToFragment(xml, document);
